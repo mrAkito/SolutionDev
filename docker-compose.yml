@@ -1,0 +1,10 @@
+version: '3.1'
+
+services:
+  go:
+    container_name: SolutionDevelopment
+    build:
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - 8080:8080
