@@ -12,6 +12,7 @@ import (
 )
 
 
+
 type Template struct {
 	templates *template.Template
 }
@@ -42,7 +43,8 @@ func main() {
   // ルートを設定
   e.GET("/", viewMainPage) // ローカル環境の場合、http://localhost:1323/ にGETアクセスされるとhelloハンドラーを実行する
   e.GET("/savegps", SaveGPS)
-  e.StartTLS(":443","server.crt","server.key")
+//   e.StartTLS(":443","server.crt","server.key")
+  e.Logger.Fatal(e.Start(":8080"))
 }
 
 
