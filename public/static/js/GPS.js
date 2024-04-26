@@ -59,7 +59,7 @@ function test2(position) {
     geo_text += "取得時刻:" + date.toLocaleString() + "\n";
     geo_text += "取得回数:" + (++num) + "\n";
 
-    url = "https://9495-125-103-213-138.ngrok-free.app/savegps?lat=" + position.coords.latitude + "&lng=" + position.coords.longitude;
+    url = "https://webappsolution.azurewebsites.net/savegps?lat=" + position.coords.latitude + "&lng=" + position.coords.longitude;
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.send(null);
