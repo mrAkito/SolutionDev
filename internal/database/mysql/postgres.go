@@ -22,7 +22,7 @@ func Connect() (*gorm.DB, error) {
 	host := "db" // Docker-composeの場合、各サービスは独自のネットワークで実行されるため、他のサービスを探すときはサービス名で探せる。
 	user := "mysql"
 	password := "mysql"
-	dbname := "develop"
+	dbname := "SolutionDB"
 	port := "3306"
 
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", user, password, host, port, dbname)
