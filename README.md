@@ -1,4 +1,4 @@
-# try-standard-layout
+# SolutionDev
 
 ## コマンド群
 ```sh
@@ -51,4 +51,4 @@ docker exec -it try-standard-layout-db psql -U mysql -d develop
 ```
 
 ## 挙動について
-- コード上で新たに外部パッケージを必要とする際は、新たにシェルを立ち上げて上記に記載されてる方法でコンテナ内で`go mod tidy`などをするとgo.modファイルが更新されます。
+- コード上で新たに外部パッケージを必要とする際は、新たにシェルを立ち上げて上記に記載されてる方法でで`make tidy`などをするとgo.modファイルが更新されます。
