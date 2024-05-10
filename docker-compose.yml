@@ -1,10 +1,28 @@
-version: '3.1'
+version: "3.3"
 
 services:
-  go:
-    container_name: SolutionDevelopment
+  backend:
     build:
-      dockerfile: Dockerfile
-    tty: true
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: SolutionDev-app
     ports:
-      - 8080:8080
+      - 9090:9090
+    volumes:
+      - ./:/try/backend
+
+  db:
+    container_name: SolutionDev-db
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: "mysql"
+      MYSQL_USER: "mysql"
+      MYSQL_PASSWORD: "mysql"
+      MYSQL_DATABASE: "develop"
+    volumes:
+      - db-store:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+volumes:
+  db-store:

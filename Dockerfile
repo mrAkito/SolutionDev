@@ -1,9 +1,11 @@
-FROM --platform=linux/amd64 golang:1.21.4
-#FROM golang:1.21.4-alpine
-#RUN apk update && apk add git
-WORKDIR /go/src
-COPY . .
-RUN go mod tidy
-EXPOSE 8080
+FROM golang:1.22.0-alpine3.19
 
-CMD ["go", "run", "main.go", "SaveGPS.go"]
+WORKDIR /try/backend
+COPY . .
+
+#RUN go mod init try-standard-layout
+RUN go install github.com/cosmtrek/air@latest
+RUN go install -tags 'mysql' github.com/golang-migrate/migrate/v4/cmd/migrate@v4.15.2
+RUN go mod tidy
+
+CMD [ "air" ]
