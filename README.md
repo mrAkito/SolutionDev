@@ -20,9 +20,6 @@ make migrate-up
 # ダウンマイグレーションを実行
 # 全てのダウンマイグレーションを実行する"- y"がついてるので注意
 make migrate-down
-
-# 例) postgresに接続する場合
-docker exec -it try-standard-layout-db psql -U mysql -d develop
 ```
 
 ## layout
