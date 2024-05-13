@@ -19,7 +19,7 @@ func New() *Mysql {
 }
 
 func Connect() (*gorm.DB, error) {
-	host := "db" // Docker-composeの場合、各サービスは独自のネットワークで実行されるため、他のサービスを探すときはサービス名で探せる。
+	host := "SolutionDev-db"
 	user := "mysql"
 	password := "mysql"
 	dbname := "SolutionDB"
