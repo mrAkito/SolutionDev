@@ -19,8 +19,8 @@ migrate-file:
 	docker exec SolutionDev-app migrate create -ext sql -dir ./cmd/migrate/data -seq $(TableName)
 
 migrate-up:
-	docker exec SolutionDev-app migrate -database "mysql://mysql:mysql@db:3306/SolutionDB" -path ./cmd/migrate/data up
+	docker exec SolutionDev-app migrate -database "mysql://mysql:mysql@tcp(SolutionDev-db:3306)/SolutionDB" -path ./cmd/migrate/data up
 
 # 全てのダウンマイグレーションを実行するecho 'y'がついてるので注意
 migrate-down:
-	echo 'y' | docker-compose exec -T backend migrate -database "mysql://mysql:mysql@db:3306/SolutionDB" -path ./cmd/migrate/data down
+	echo 'y' | docker-compose exec -T backend migrate -database "mysql://mysql:mysql@tcp(SolutionDev-db:3306)/SolutionDB" -path ./cmd/migrate/data down

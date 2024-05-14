@@ -1,0 +1,1 @@
+ALTER TABLE GPSInfo ADD FOREIGN KEY (id) REFERENCES Goal(goal_id);

@@ -1,0 +1,1 @@
+ALTER TABLE Videos ADD CONSTRAINT Videos_ibfk_1 FOREIGN KEY (current_step_id) REFERENCES Steps(id);
