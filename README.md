@@ -14,7 +14,6 @@ make tidy
 # マイグレーション用fileを作成
 make migrate-file TableName="ここにテーブル名を記入"
 # 例) migrate-file TableName="create_goal"
-# ※のちのち、テーブルを削除する際も、`make migrate-down`ではなく、削除用クエリを追加すべきらしい
 
 # マイグレートを実行
 make migrate-up
