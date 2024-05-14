@@ -13,6 +13,8 @@ make tidy
 
 # マイグレーション用fileを作成
 make migrate-file TableName="ここにテーブル名を記入"
+# 例) migrate-file TableName="create_goal"
+# ※のちのち、テーブルを削除する際も、`make migrate-down`ではなく、削除用クエリを追加すべきらしい
 
 # マイグレートを実行
 make migrate-up
@@ -48,4 +50,4 @@ make migrate-down
 ```
 
 ## 挙動について
-- コード上で新たに外部パッケージを必要とする際は、新たにシェルを立ち上げて上記に記載されてる方法でで`make tidy`などをするとgo.modファイルが更新されます。
+- コード上で新たに外部パッケージを必要とする際は、新たにシェルを立ち上げて上記に記載されてる方法で`make tidy`などをするとgo.modファイルが更新されます。
