@@ -23,30 +23,5 @@ make migrate-up
 make migrate-down
 ```
 
-## layout
-```sh
-/cmd
-	main.go         # ここでインスタンス作成　例) router.New()
-	/migrate
-	  /data
-	    migrate-up.sql    # golang-migrateにより自動生成されたマイグレーションファイル群
-	    migrate-down.sql  # こっちはテーブル削除用
-/internal
-	/router
-		router.go	# ここでechoインスタンスを作成するメソッドを実装 func New(){}
-		group.go
-	/server
-		server.go	# serverインスタンスを作成するメソッドを実装 func New(){}
-		product.go
-	/database
-		/request
-		/response
-			product.go
-		/mysql
-			mysql.go		#dbのconnectやcloseを行う
-	/domain         # テーブルの構造を定義する
-		product.go
-```
-
 ## 挙動について
 - コード上で新たに外部パッケージを必要とする際は、新たにシェルを立ち上げて上記に記載されてる方法で`make tidy`などをするとgo.modファイルが更新されます。

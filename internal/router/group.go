@@ -11,9 +11,8 @@ func (r *router) group(g *echo.Group) {
 		return c.JSON(http.StatusOK, "hello echo")
 	})
 
-	product := g.Group("/product")
+	tigira := g.Group("/tigira")
 	{
-		product.GET("", r.rdb.Product.List)
-		product.GET("/:id", r.rdb.Product.Get)
+		tigira.POST("/:goal_name", r.rdb.Tigira.Create)
 	}
 }
