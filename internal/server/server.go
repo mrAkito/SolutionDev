@@ -5,13 +5,13 @@ import (
 )
 
 type Server struct {
-	Product *product
+	Tigira *tigira
 }
 
 func New(
 	rdb *mysql.Mysql,
 ) *Server {
 	return &Server{
-		Product: &product{rdb},
+		Tigira: &tigira{rdb},
 	}
 }

@@ -9,12 +9,12 @@ import (
 )
 
 type Mysql struct {
-	Product Product
+	Tigira Tigira
 }
 
 func New() *Mysql {
 	return &Mysql{
-		Product: &product{},
+		Tigira: &tigira{},
 	}
 }
 
