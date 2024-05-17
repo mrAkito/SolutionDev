@@ -1,0 +1,1 @@
+ALTER TABLE Videos ADD FOREIGN KEY (previous_step_id) REFERENCES Steps(id);

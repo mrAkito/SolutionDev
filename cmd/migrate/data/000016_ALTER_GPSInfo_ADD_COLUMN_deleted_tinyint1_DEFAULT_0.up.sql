@@ -1,0 +1,1 @@
+ALTER TABLE GPSInfo ADD COLUMN deleted tinyint(1) DEFAULT 0;
