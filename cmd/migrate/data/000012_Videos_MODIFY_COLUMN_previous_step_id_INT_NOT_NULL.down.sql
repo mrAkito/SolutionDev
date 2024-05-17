@@ -1,0 +1,1 @@
+ALTER TABLE Videos MODIFY COLUMN previous_step_id INT;
