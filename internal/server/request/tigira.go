@@ -1,10 +1,9 @@
 package request
 
-import "SolutionDev/internal/domain"
-
-type GetGoal struct {
-	GoalName string `param:"goal_name" validate:"required"`
-}
+import (
+	"SolutionDev/internal/conversion/null"
+	"SolutionDev/internal/domain"
+)
 
 type GPSInfo struct {
 	Latitude  float64 `json:"latitude" validate:"required"`
@@ -13,27 +12,32 @@ type GPSInfo struct {
 
 type PostGPSInfo struct {
 	GoalName string    `param:"goal_name" validate:"required"`
+	Option   *string   `json:"option" validate:"omitempty"`
 	GPSInfos []GPSInfo `json:"" validate:"required,dive"`
 }
 
-func (param *GetGoal) ToGoal() *domain.Goal {
-	return &domain.Goal{
-		GoalName: param.GoalName,
+func ToGPSInfo(gps GPSInfo, id int, opt *string) *domain.GPSInfo {
+	return &domain.GPSInfo{
+		Id:  id,
+		Lat: gps.Latitude,
+		Lng: gps.Longitude,
+		Opt: null.NullFromPtrStringOpt(opt),
+		Dlt: null.NullFromPtrInt(nil),
 	}
 }
 
-func ToGPSInfo(GPS GPSInfo, id int) *domain.GPSInfo {
+func (param *PostGPSInfo) ToSearchGPSInfo(id int) *domain.GPSInfo {
 	return &domain.GPSInfo{
 		Id:  id,
-		Lat: GPS.Latitude,
-		Lng: GPS.Longitude,
+		Opt: null.NullFromPtrStringOpt(param.Option),
+		Dlt: null.NullFromPtrInt(nil),
 	}
 }
 
 func (param *PostGPSInfo) ToGPSInfos(id int) []*domain.GPSInfo {
 	var GPSinfos []*domain.GPSInfo
 	for _, p := range param.GPSInfos {
-		GPSinfos = append(GPSinfos, ToGPSInfo(p, id))
+		GPSinfos = append(GPSinfos, ToGPSInfo(p, id, param.Option))
 	}
 	return GPSinfos
 }

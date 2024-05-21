@@ -30,6 +30,11 @@ func (s *tigira) Create(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, "Database error")
 	}
 
+	err = s.rdb.Tigira.Update(ctx, req.ToSearchGPSInfo(goalId.GoalId))
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, "Database error")
+	}
+
 	err = s.rdb.Tigira.Create(ctx, req.ToGPSInfos(goalId.GoalId))
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, "Database error")

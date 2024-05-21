@@ -3,11 +3,13 @@ package mysql
 import (
 	"SolutionDev/internal/domain"
 	"context"
+	"database/sql"
 )
 
 type Tigira interface {
 	Create(ctx context.Context, req []*domain.GPSInfo) error
 	GetGoalId(ctx context.Context, req *domain.Goal) (*domain.Goal, error)
+	Update(ctx context.Context, req *domain.GPSInfo) error
 }
 
 type tigira struct{}
@@ -30,4 +32,18 @@ func (t *tigira) GetGoalId(ctx context.Context, req *domain.Goal) (*domain.Goal,
 		return nil, err
 	}
 	return goal, nil
+}
+
+func (t *tigira) Update(ctx context.Context, req *domain.GPSInfo) error {
+	// 検索条件に一致するレコードのdeletedカラムの値を1に更新
+	err := DBFromCtx(ctx).
+		Model(&domain.GPSInfo{}).
+		Where(req).
+		Update("deleted", sql.NullInt64{Int64: 1, Valid: true}).Error
+
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

@@ -1,9 +1,13 @@
 package domain
 
+import "database/sql"
+
 type GPSInfo struct {
-	Id  int     `gorm:"column:id"`
-	Lat float64 `gorm:"column:longitude"`
-	Lng float64 `gorm:"column:latitude"`
+	Id  int            `gorm:"column:id"`
+	Lat float64        `gorm:"column:longitude"`
+	Lng float64        `gorm:"column:latitude"`
+	Opt sql.NullString `gorm:"column:option"`
+	Dlt sql.NullInt64  `gorm:"column:deleted"`
 }
 
 type Goal struct {
