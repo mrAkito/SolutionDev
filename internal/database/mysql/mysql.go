@@ -10,11 +10,13 @@ import (
 
 type Mysql struct {
 	Tigira Tigira
+	Video Video
 }
 
 func New() *Mysql {
 	return &Mysql{
 		Tigira: &tigira{},
+		Video:  &video{},
 	}
 }
 

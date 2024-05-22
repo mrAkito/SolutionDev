@@ -6,6 +6,7 @@ import (
 
 type Server struct {
 	Tigira *tigira
+	Video *video
 }
 
 func New(
@@ -13,5 +14,6 @@ func New(
 ) *Server {
 	return &Server{
 		Tigira: &tigira{rdb},
+		Video: &video{rdb},
 	}
 }

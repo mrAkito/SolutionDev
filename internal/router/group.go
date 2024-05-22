@@ -15,4 +15,9 @@ func (r *router) group(g *echo.Group) {
 	{
 		tigira.POST("/:goal_name", r.rdb.Tigira.Create)
 	}
+
+	video := g.Group("/video")
+	{
+		video.GET("", r.rdb.Video.GetVideo)
+	}
 }
