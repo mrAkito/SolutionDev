@@ -14,5 +14,6 @@ func (r *router) group(g *echo.Group) {
 	tigira := g.Group("/tigira")
 	{
 		tigira.POST("/:goal_name", r.rdb.Tigira.Create)
+		tigira.GET("/:goal_name", r.rdb.Tigira.Get)
 	}
 }

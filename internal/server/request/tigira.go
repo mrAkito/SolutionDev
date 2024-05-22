@@ -16,6 +16,11 @@ type PostGPSInfo struct {
 	GPSInfos []GPSInfo `json:"" validate:"required,dive"`
 }
 
+type GetGPSInfo struct {
+	GoalName string  `param:"goal_name" validate:"required"`
+	Option   *string `json:"option" validate:"omitempty"`
+}
+
 func ToGPSInfo(gps GPSInfo, id int, opt *string) *domain.GPSInfo {
 	return &domain.GPSInfo{
 		Id:  id,
@@ -45,5 +50,19 @@ func (param *PostGPSInfo) ToGPSInfos(id int) []*domain.GPSInfo {
 func (param *PostGPSInfo) ToGPSInfoGoalId() *domain.Goal {
 	return &domain.Goal{
 		GoalName: param.GoalName,
+	}
+}
+
+func (param *GetGPSInfo) ToGPSInfo() *domain.Goal {
+	return &domain.Goal{
+		GoalName: param.GoalName,
+	}
+}
+
+func (param *GetGPSInfo) ToGoal(id int, opt *string) *domain.GPSInfo {
+	return &domain.GPSInfo{
+		Id:  id,
+		Opt: null.NullFromPtrStringOpt(opt),
+		Dlt: null.NullFromPtrInt(nil),
 	}
 }

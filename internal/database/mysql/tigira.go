@@ -10,6 +10,7 @@ type Tigira interface {
 	Create(ctx context.Context, req []*domain.GPSInfo) error
 	GetGoalId(ctx context.Context, req *domain.Goal) (*domain.Goal, error)
 	Update(ctx context.Context, req *domain.GPSInfo) error
+	List(ctx context.Context, req *domain.GPSInfo) ([]*domain.GPSInfo, error)
 }
 
 type tigira struct{}
@@ -46,4 +47,15 @@ func (t *tigira) Update(ctx context.Context, req *domain.GPSInfo) error {
 	}
 
 	return nil
+}
+
+func (t *tigira) List(ctx context.Context, req *domain.GPSInfo) ([]*domain.GPSInfo, error) {
+	var res []*domain.GPSInfo
+	err := DBFromCtx(ctx).
+		Where(&req).
+		Find(&res).Error
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
 }
