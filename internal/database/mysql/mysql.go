@@ -3,7 +3,9 @@ package mysql
 import (
 	"context"
 	"fmt"
+	"os"
 
+	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -18,12 +20,18 @@ func New() *Mysql {
 	}
 }
 
+func init() {
+	if err := godotenv.Load(); err != nil {
+		fmt.Print("No .env file found")
+	}
+}
+
 func Connect() (*gorm.DB, error) {
-	host := "SolutionDev-db"
-	user := "mysql"
-	password := "mysql"
-	dbname := "SolutionDB"
-	port := "3306"
+	host := os.Getenv("DB_HOST")
+	user := os.Getenv("DB_USER")
+	password := os.Getenv("DB_PASSWORD")
+	dbname := os.Getenv("DB_NAME")
+	port := os.Getenv("DB_PORT")
 
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local", user, password, host, port, dbname)
 
