@@ -3,9 +3,9 @@ package server
 import (
 	"SolutionDev/internal/database/mysql"
 	"SolutionDev/internal/server/request"
+	"fmt"
 	"github.com/labstack/echo/v4"
 	"net/http"
-	"fmt"
 )
 
 type Video interface {
@@ -21,6 +21,7 @@ func (s *video) GetVideo(c echo.Context) error {
 	if err := c.Bind(&req); err != nil {
 		return c.JSON(http.StatusBadRequest, "bad request")
 	}
+	fmt.Printf("%+v", req)
 	if err := c.Validate(&req); err != nil {
 		return c.JSON(http.StatusBadRequest, "bad request")
 	}
