@@ -5,12 +5,13 @@ import "SolutionDev/internal/domain"
 type Step struct {
 	Latitude  float64 `json:"latitude" validate:"required"`
 	Longitude float64 `json:"longitude" validate:"required"`
+	Check 	 bool    `json:"check"`
 }
 
 type PostSteps struct {
-	PreviousStep Step `json:"previous_step" validate:"required"`
-	CurrentStep  Step `json:"current_step" validate:"required"`
-	NextStep     Step `json:"next_step" validate:"required"`
+	PreviousStep Step `json:"previousStep" validate:"required"`
+	CurrentStep  Step `json:"currentStep" validate:"required"`
+	NextStep     Step `json:"nextStep" validate:"required"`
 }
 
 type Video struct {
