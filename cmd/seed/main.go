@@ -37,8 +37,6 @@ func seeds(gdb *gorm.DB) error {
 		{ CurrentStepId: 5, PreviousStepId: 4, NextStepId: 6, Url: "https://www.youtube.com/watch?v=5" },
 		{ CurrentStepId: 6, PreviousStepId: 5, NextStepId: 7, Url: "https://www.youtube.com/watch?v=6" },
 		{ CurrentStepId: 7, PreviousStepId: 6, NextStepId: 8, Url: "https://www.youtube.com/watch?v=7" },
-		{ CurrentStepId: 8, PreviousStepId: 7, NextStepId: 9, Url: "https://www.youtube.com/watch?v=8" },
-		{ CurrentStepId: 9, PreviousStepId: 8, NextStepId: 10, Url: "https://www.youtube.com/watch?v=9" },
 	}
 
 	if err := gdb.Create(&videos).Error; err != nil {
