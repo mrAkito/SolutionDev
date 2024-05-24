@@ -24,3 +24,6 @@ migrate-up:
 # 全てのダウンマイグレーションを実行するecho 'y'がついてるので注意
 migrate-down:
 	echo 'y' | docker-compose exec -T backend migrate -database "mysql://mysql:mysql@tcp(SolutionDev-db:3306)/SolutionDB" -path ./cmd/migrate/data down
+
+seed:
+	docker exec SolutionDev-app go run cmd/seed/main.go
