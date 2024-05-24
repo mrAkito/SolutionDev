@@ -17,8 +17,8 @@ type PostGPSInfo struct {
 }
 
 type GetGPSInfo struct {
-	GoalName string  `param:"goal_name" validate:"required"`
-	Option   *string `json:"option" validate:"omitempty"`
+	GoalName string  `query:"goal_name" validate:"required"`
+	Option   *string `query:"option" validate:"omitempty"`
 }
 
 func ToGPSInfo(gps GPSInfo, id int, opt *string) *domain.GPSInfo {
