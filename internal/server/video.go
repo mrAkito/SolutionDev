@@ -21,7 +21,6 @@ func (s *video) GetVideo(c echo.Context) error {
 	if err := c.Bind(&req); err != nil {
 		return c.JSON(http.StatusBadRequest, "bind error")
 	}
-	fmt.Printf("%+v", req)
 	if err := c.Validate(&req); err != nil {
 		return c.JSON(http.StatusBadRequest, "validate error")
 	}

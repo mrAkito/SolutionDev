@@ -19,6 +19,6 @@ func (r *router) group(g *echo.Group) {
 
 	video := g.Group("/video")
 	{
-		video.GET("", r.rdb.Video.GetVideo)
+		video.POST("", r.rdb.Video.GetVideo)
 	}
 }
