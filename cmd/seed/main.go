@@ -17,14 +17,14 @@ func seeds(gdb *gorm.DB) error {
 	}
 
 	gpsInfo := []domain.GPSInfo{
-		{Id: 1, Lat: 35.6917081, Lng: 139.6966017, Opt: sql.NullString{String: "shortest", Valid: true}, Dlt: sql.NullInt64{Int64: 0}},
-		{Id: 1, Lat: 35.69295690000001, Lng: 139.6968302, Opt: sql.NullString{String: "shortest", Valid: true}, Dlt: sql.NullInt64{Int64: 0}},
-		{Id: 1, Lat: 35.6930854, Lng: 139.6967737, Opt: sql.NullString{String: "shortest", Valid: true}, Dlt: sql.NullInt64{Int64: 0}},
-		{Id: 1, Lat: 35.69372329999999, Lng: 139.6947911, Opt: sql.NullString{String: "shortest", Valid: true}, Dlt: sql.NullInt64{Int64: 0}},
-		{Id: 1, Lat: 35.6943641, Lng: 139.69524, Opt: sql.NullString{String: "shortest", Valid: true}, Dlt: sql.NullInt64{Int64: 0}},
-		{Id: 1, Lat: 35.6945804, Lng: 139.6947985, Opt: sql.NullString{String: "shortest", Valid: true}, Dlt: sql.NullInt64{Int64: 0}},
-		{Id: 1, Lat: 35.6950534, Lng: 139.6950874, Opt: sql.NullString{String: "shortest", Valid: true}, Dlt: sql.NullInt64{Int64: 0}},
-		{Id: 1, Lat: 35.6951818, Lng: 139.6947902, Opt: sql.NullString{String: "shortest", Valid: true}, Dlt: sql.NullInt64{Int64: 0}},
+		{Id: 1, Lat: 35.6917081, Lng: 139.6966017, Opt: sql.NullString{String: "shortest", Valid: true}, Dlt: sql.NullInt64{Int64: 0, Valid: true}},
+		{Id: 1, Lat: 35.69295690000001, Lng: 139.6968302, Opt: sql.NullString{String: "shortest", Valid: true}, Dlt: sql.NullInt64{Int64: 0, Valid: true}},
+		{Id: 1, Lat: 35.6930854, Lng: 139.6967737, Opt: sql.NullString{String: "shortest", Valid: true}, Dlt: sql.NullInt64{Int64: 0, Valid: true}},
+		{Id: 1, Lat: 35.69372329999999, Lng: 139.6947911, Opt: sql.NullString{String: "shortest", Valid: true}, Dlt: sql.NullInt64{Int64: 0, Valid: true}},
+		{Id: 1, Lat: 35.6943641, Lng: 139.69524, Opt: sql.NullString{String: "shortest", Valid: true}, Dlt: sql.NullInt64{Int64: 0, Valid: true}},
+		{Id: 1, Lat: 35.6945804, Lng: 139.6947985, Opt: sql.NullString{String: "shortest", Valid: true}, Dlt: sql.NullInt64{Int64: 0, Valid: true}},
+		{Id: 1, Lat: 35.6950534, Lng: 139.6950874, Opt: sql.NullString{String: "shortest", Valid: true}, Dlt: sql.NullInt64{Int64: 0, Valid: true}},
+		{Id: 1, Lat: 35.6951818, Lng: 139.6947902, Opt: sql.NullString{String: "shortest", Valid: true}, Dlt: sql.NullInt64{Int64: 0, Valid: true}},
 	}
 
 	if err := gdb.Create(&gpsInfo).Error; err != nil {
